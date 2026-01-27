@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: mewbot
+      POSTGRES_PASSWORD: mewbot_password_change_me
+      POSTGRES_DB: mewbot_cartel
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+  bot:
+    build: .
+    depends_on:
+      - postgres
+    environment:
+      BOT_TOKEN: ${BOT_TOKEN}
+      DATABASE_URL: postgresql://mewbot:mewbot_password_change_me@postgres:5432/mewbot_cartel
+    restart: unless-stopped
+    volumes:
+      - ./:/app
+
+volumes:
+  postgres_data:
