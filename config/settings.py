@@ -206,4 +206,4 @@ WEBHOOK_PATH = os.getenv('WEBHOOK_PATH', '/webhook')
 WEBHOOK_URL = f"{WEBHOOK_HOST}{WEBHOOK_PATH}"
 
 # Webapp URL для Telegraph гайдов
-TELEGRAPH_BASE = "https://telegra.ph/"
+TELEGRAPH_BASE = "https://telegra.ph/MewBot---Rukovodstvo-01-28-2"
